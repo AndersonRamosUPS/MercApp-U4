@@ -25,6 +25,16 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use('/uploads', express.static('uploads'))
 
+//Endpoint de healthcheck
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString(),
+  })
+})
+
 // Rutas
 app.use('/api/products', productosRouter)
 app.use('/api/categories', categoriasRouter)
