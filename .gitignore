@@ -1,0 +1,33 @@
+# --- GLOBAL ----
+node_modules/
+dist/
+.env
+.env.local
+.env.production
+.DS_Store
+
+# --- BACKEND ----
+backend/node_modules/
+backend/.env
+backend/.env.local
+backend/.env.production
+backend/dist/
+backend/uploads/
+
+# --- FRONTEND ----
+frontend/node_modules/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/dist/
+
+# --- LOGS ----
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- SYSTEM ---
+.vscode/
+.idea/
