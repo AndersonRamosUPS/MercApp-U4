@@ -17,7 +17,6 @@ const products = ref<Product[]>([]);
 export function useProducts() {
   // usamos el composable genérico
   const {
-    data,
     loading,
     error,
     request,
