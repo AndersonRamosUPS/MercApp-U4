@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>MercApp – Micrositio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <h1>MercApp</h1>
+      <p class="subtitle">Micrositio de despliegue y documentación</p>
+      <nav class="main-nav">
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#endpoints">Endpoints</a>
+        <a href="#deploy">Despliegues</a>
+        <a href="#repositorio">Repositorio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ARQUITECTURA -->
+    <section id="arquitectura" class="card">
+      <h2>Arquitectura de despliegue</h2>
+      <p>
+        MercApp es una aplicación web compuesta por un frontend SPA en Vue 3 y
+        un backend REST en Node.js/Express, con persistencia en MongoDB Atlas.
+      </p>
+
+      <div class="architecture-diagram">
+        <div class="box">
+          <h3>Cliente</h3>
+          <p>Navegador</p>
+          <p>MercApp (Vue 3 + Vite)</p>
+          <p class="small">Origen: Netlify</p>
+        </div>
+
+        <div class="arrow">HTTPS</div>
+
+        <div class="box">
+          <h3>API REST</h3>
+          <p>Node.js + Express</p>
+          <p>Railway</p>
+          <p class="small">
+            Base URL:<br />
+            <code>https://merry-nourishment-production-f345.up.railway.app/api</code>
+          </p>
+        </div>
+
+        <div class="arrow">MongoDB driver</div>
+
+        <div class="box">
+          <h3>Base de datos</h3>
+          <p>MongoDB Atlas</p>
+          <p class="small">Colecciones: <code>products</code>, <code>categories</code></p>
+        </div>
+      </div>
+
+      <p class="note">
+        CORS se ha configurado para permitir únicamente el origen público de
+        Netlify como cliente autorizado.
+      </p>
+    </section>
+
+    <!-- ENDPOINTS -->
+    <section id="endpoints" class="card">
+      <h2>Endpoints principales de la API</h2>
+      <p>
+        La API expone endpoints REST para gestionar productos y categorías. A
+        continuación se resumen los más importantes.
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Ruta</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag get">GET</span></td>
+              <td><code>/api/products</code></td>
+              <td>Obtiene el listado completo de productos.</td>
+            </tr>
+            <tr>
+              <td><span class="tag get">GET</span></td>
+              <td><code>/api/products/:id</code></td>
+              <td>Obtiene el detalle de un producto por su identificador.</td>
+            </tr>
+            <tr>
+              <td><span class="tag post">POST</span></td>
+              <td><code>/api/products</code></td>
+              <td>Crea un nuevo producto a partir del cuerpo de la petición.</td>
+            </tr>
+            <tr>
+              <td><span class="tag get">GET</span></td>
+              <td><code>/api/categories</code></td>
+              <td>Devuelve la lista de categorías disponibles.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Todas las respuestas se devuelven en formato JSON. En caso de error, la
+        API responde con un objeto que incluye mensaje y código de estado HTTP.
+      </p>
+    </section>
+
+    <!-- DESPLIEGUES -->
+    <section id="deploy" class="card">
+      <h2>Despliegues</h2>
+      <div class="deploy-grid">
+        <article class="deploy-card">
+          <h3>Frontend – Netlify</h3>
+          <p>
+            Aplicación SPA Vue 3/Vite publicada como sitio estático. Consume la
+            API REST de Railway.
+          </p>
+          <p class="link-row">
+            URL pública:<br />
+            <a href="https://friendly-hummingbird-6b7487.netlify.app" target="_blank" rel="noopener">
+              https://friendly-hummingbird-6b7487.netlify.app
+            </a>
+          </p>
+        </article>
+
+        <article class="deploy-card">
+          <h3>Backend – Railway</h3>
+          <p>
+            Servicio Node.js/Express expuesto vía HTTPS, conectado a MongoDB
+            Atlas. CORS restringido al dominio de Netlify.
+          </p>
+          <p class="link-row">
+            Endpoint de prueba:<br />
+            <a href="https://merry-nourishment-production-f345.up.railway.app/api/products"
+               target="_blank" rel="noopener">
+              /api/products
+            </a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- REPO -->
+    <section id="repositorio" class="card">
+      <h2>Repositorio de código</h2>
+      <p>
+        El código fuente completo del proyecto (frontend, backend y este
+        micrositio) se encuentra disponible en el siguiente repositorio:
+      </p>
+      <p class="link-row">
+        <a href="https://github.com/TU-USUARIO/TU-REPO"
+           target="_blank" rel="noopener">
+          https://github.com/AndersonRamosUPS/MercApp-U4.git
+        </a>
+      </p>
+      <p class="small">
+        Estructura principal: <code>/frontend</code> (SPA), <code>/backend</code> (API),
+        <code>/docs</code> (micrositio GitHub Pages).
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; 2025 MercApp – Micrositio de despliegue</small>
+    </div>
+  </footer>
+</body>
+</html>
